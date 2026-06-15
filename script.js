@@ -24,31 +24,41 @@ botonesOpcionesSalir.forEach(boton => {
 });
 
 btnCerrar.addEventListener('click', (e) => {
-    const todosLosVideos = document.querySelectorAll('iframe');
-    todosLosVideos.forEach(ifr => {
-        ifr.src = ifr.src.replace("autoplay=1", "autoplay=0");
-    });
-
+    // 1. Crear nuevo video
     const nuevoVideo = document.createElement('iframe');
-    // IMPORTANTE: Cambia ID_DEL_VIDEO aquí también
-    nuevoVideo.src = 'https://www.youtube.com/embed/yMnHP8M2zfw?autoplay=1&mute=1';
+    // Para evitar el mute automático, es obligatorio que el usuario interactúe.
+    // Usamos el ID del video y forzamos autoplay
+    nuevoVideo.src = 'https://www.youtube.com/embed/yMnHP8M2zfw?autoplay=1';
     nuevoVideo.classList.add('video-clonado');
     nuevoVideo.frameBorder = "0";
-    nuevoVideo.allow = "autoplay";
+    nuevoVideo.allow = "autoplay; encrypted-media";
     
-    const anchoVideo = 300; 
+    // 2. Tamaño grande
+    const anchoVideo = 400; 
+    const altoVideo = 225;
     const anchoPantalla = window.innerWidth;
     const altoPantalla = window.innerHeight;
+
     let posX, posY, posicionSegura = false;
 
+    // 3. Cálculo de posición segura (evitando esquina superior derecha)
     while (!posicionSegura) {
-        posX = Math.random() * (anchoPantalla - anchoVideo);
-        posY = Math.random() * (altoPantalla - 200);
-        if (!(posX > anchoPantalla - 350 && posY < 250)) posicionSegura = true;
+        posX = Math.random() * (anchoPantalla - anchoVideo - 50);
+        posY = Math.random() * (altoPantalla - altoVideo - 50);
+
+        // Zona prohibida: esquina superior derecha (X)
+        const enZonaProhibida = (posX > anchoPantalla - 450) && (posY < 300);
+
+        if (!enZonaProhibida) {
+            posicionSegura = true;
+        }
     }
 
     nuevoVideo.style.left = `${posX}px`;
     nuevoVideo.style.top = `${posY}px`;
+    nuevoVideo.style.width = `${anchoVideo}px`;
+    nuevoVideo.style.height = `${altoVideo}px`;
+
     modal.appendChild(nuevoVideo);
 });
 
