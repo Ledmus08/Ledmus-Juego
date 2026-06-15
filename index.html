@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Juego LEDMUS </title>
+    <title>Juego LEDMUS</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Importamos una fuente moderna de Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -17,10 +16,12 @@
 
     <div id="ventana-video" class="modal oculto">
         <button id="btn-cerrar">✖</button>
-        <video id="mi-video" controls>
-            <source src="video1.mp4" type="video/mp4">
-            Tu navegador no soporta la reproducción de videos.
-        </video>
+        <iframe id="mi-video" width="560" height="315" 
+            src="https://www.youtube.com/embed/yMnHP8M2zfw?autoplay=0" 
+            title="Video Receta" frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+        </iframe>
     </div>
 
     <script src="script.js"></script>
