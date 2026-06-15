@@ -138,12 +138,10 @@ button:active {
 /* Estilo para los videos clonados que aparecen aleatoriamente */
 .video-clonado {
     position: absolute;
-    width: 300px; /* Un tamaño más pequeño para que no estorben tanto */
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.9);
     border: 2px solid rgba(255, 255, 255, 0.2);
-    z-index: 105; /* Por encima del modal, pero debajo de la X */
-    outline: none;
+    z-index: 105;
     background-color: black;
 }
 
